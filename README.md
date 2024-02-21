@@ -14,3 +14,4 @@ The python script receives data from PT100 temperature sensor through RS485 comm
 
 # What are Ground Source Heat Pump (GSHP) and Energy Pile?
 
+https://en.wikipedia.org/wiki/Ground_source_heat_pump
