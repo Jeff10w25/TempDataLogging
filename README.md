@@ -1,17 +1,21 @@
 # Temperature Data Logging
+This repository is a part of Kasetsart University's senior project "Ground Source Heat Pump (GSHP) and Energy Piles".
 
-This repository is a part of Kasetsart University's senior project "Ground Source Heat Pump (GSHP) and Energy Pile".
-Contains in the repository, are python script and an excel file.
-The python script receives temperature data from digital indicator which are connected to PT100 sensor through RS485 communication.  After which these data are store in an excel file with the time and date included.
+## Purpose
+To study the control and automation aspect of the electrical instruments that are being used in GSHP and Energy Piles. The program is being run on a Raspberry Pi, allowing continuous temperature data logging.
+
+## Function
+The Python script receives temperature data from digital indicators which are connected to a PT100 sensor through RS485 communication. Afterward, this data is stored in an Excel file with the time and date included.
 
 ## Contributors
 Undergraduates: Thanathorn Suwanrasamee and Napat Mahakittikun
-Project Advisor: Assoc. Prof. Peerayot Sanposh
-Project Committee: Assoc. Prof. Kanjanapan Sukvichai
 
-Contains in the repository, are python script and an excel file.
-The python script receives data from PT100 temperature sensor through RS485 communication and store them in an excel file.
+Project Advisor: Assoc. Prof. Peerayot Sanposh
+
+Project Committee: Assoc. Prof. Kanjanapan Sukvichai
 
 # What are Ground Source Heat Pump (GSHP) and Energy Pile?
 
 https://en.wikipedia.org/wiki/Ground_source_heat_pump
+
+https://www.linkedin.com/pulse/energy-pile-source-green-under-our-buildings-asadinik-m-sc-p-eng
