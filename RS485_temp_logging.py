@@ -1,7 +1,9 @@
 import serial
 import time
 import minimalmodbus
-import openpyxl as xl
+import pandas as pd
+from datetime import datetime
+from openpyxl import load_workbook
 
 #RS485 
 device_address = 1
@@ -12,31 +14,24 @@ di_dev_1.serial.parity = serial.PARITY_NONE
 di_dev_1.serial.stopbits = 1
 di_dev_1.serial.timeout = 0.05                  #seconds
 di_dev_1.close_port_after_each_call = True
+i=1
 
 #Excel
-time_column = 1
-temp_column = 2
-time_row = 2
-temp_row = 2
-file = xl.Workbook()
-namesheet = file.worksheets[0]
-namesheet['A1'] = 'Date and Time'
-namesheet['B1'] = 'Temperature (C)'
-namesheet.column_dimensions['A'].width = 25
-namesheet.column_dimensions['B'].width = 15
-file.save('Temperature_logging.xlsx')
-
-while 1:
+while (i<10):
     data_ch_1_1 = di_dev_1.read_register(0,1)
-    seconds = time.time()
-    local_time = time.ctime(seconds)
-    namesheet.cell(time_row,time_column).value = str(local_time)
-    namesheet.cell(temp_row,temp_column).value = str(data_ch_1_1)
-    time_row += 1
-    temp_row += 1
-    file.save('Temperature_logging.xlsx')
+    current_time = datetime.now().strftime("%H:%M:%S")
+    current_date = datetime.now().strftime("%Y-%m-%d")
+    
+   #Excel input of channel 1
+    df = pd.DataFrame({"Date":[current_date], "Time":[current_time], "Temperature (C)":[data_ch_1_1]})
+    writer = pd.ExcelWriter("Temperature_logging.xlsx", engine='openpyxl')
+    writer.book = load_workbook("Temperature_logging.xlsx")
+    writer.sheets = dict((ws.title, ws) for ws in writer.book.worksheets)
+    reader = pd.read_excel(r'Temperature_logging.xlsx')
+    df.to_excel(writer, index=False ,header=False, startrow=len(reader)+1 ,sheet_name="Sheet1")
+    writer.close()
 
-    print(str(local_time) + ", " + "Ch1 of 1st: " + str(data_ch_1_1) + " C")
-
-    time.sleep(60) #Period of data collection
+    print(str(current_date) + " " + str(current_time) + ", " + "Ch1 of 1st: " + str(data_ch_1_1) + " C")
+    time.sleep(1) #Period of data logging
+    i+=1
 
