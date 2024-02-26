@@ -1,7 +1,7 @@
 import serial
 import time
 import minimalmodbus
-import openpyxl as xl
+import pandas as pd
 
 #RS485 
 device_address = 1
@@ -14,6 +14,13 @@ di_dev_1.serial.timeout = 0.05                  #seconds
 di_dev_1.close_port_after_each_call = True
 
 #Excel
+
+
+
+
+
+
+
 time_column = 1
 temp_column = 2
 time_row = 2
@@ -39,4 +46,7 @@ while 1:
     print(str(local_time) + ", " + "Ch1 of 1st: " + str(data_ch_1_1) + " C")
 
     time.sleep(60) #Period of data collection
+
+
+
 
