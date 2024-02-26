@@ -1,6 +1,6 @@
 #!/bin/sh
-cd TempDataLogging/excel
-git add --all
+cd TempDataLogging
+git add /excel
 
 timestamp() {
   date +"at 10:30 PM"
