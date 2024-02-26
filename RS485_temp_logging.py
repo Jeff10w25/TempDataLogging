@@ -1,7 +1,5 @@
 import serial
 import time
-import matplotlib.pyplot as plt
-import matplotlib.animation as animation
 import minimalmodbus
 import pandas as pd
 from datetime import datetime
