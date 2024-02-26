@@ -1,9 +1,12 @@
 import serial
 import time
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
 import minimalmodbus
 import pandas as pd
 from datetime import datetime
 from openpyxl import load_workbook
+from os.path import expanduser as ospath
 
 #RS485 
 device_address = 1
@@ -16,22 +19,24 @@ di_dev_1.serial.timeout = 0.05                  #seconds
 di_dev_1.close_port_after_each_call = True
 i=1
 
-#Excel
-while (i<10):
+while (i<100):
+    
     data_ch_1_1 = di_dev_1.read_register(0,1)
     current_time = datetime.now().strftime("%H:%M:%S")
     current_date = datetime.now().strftime("%Y-%m-%d")
     
-   #Excel input of channel 1
-    df = pd.DataFrame({"Date":[current_date], "Time":[current_time], "Temperature (C)":[data_ch_1_1]})
-    writer = pd.ExcelWriter("Temperature_logging.xlsx", engine='openpyxl')
-    writer.book = load_workbook("Temperature_logging.xlsx")
+   #Excel input of channel 1_1
+    excel_path = ospath('~/TempDataLogging/Temperature_logging.xlsx')
+    data = pd.DataFrame({"Date":[current_date], "Time":[current_time], "Temperature (C)":[data_ch_1_1]})
+
+    writer = pd.ExcelWriter(excel_path, engine='openpyxl')
+    writer.book = load_workbook(excel_path)
     writer.sheets = dict((ws.title, ws) for ws in writer.book.worksheets)
-    reader = pd.read_excel(r'Temperature_logging.xlsx')
-    df.to_excel(writer, index=False ,header=False, startrow=len(reader)+1 ,sheet_name="Sheet1")
+    reader = pd.read_excel(excel_path, index_col=None, na_values=['NA'], usecols="A:C")
+    data.to_excel(writer, index=False ,header=False, startrow=len(reader)+1 ,sheet_name="Sheet1")
     writer.close()
 
     print(str(current_date) + " " + str(current_time) + ", " + "Ch1 of 1st: " + str(data_ch_1_1) + " C")
-    time.sleep(1) #Period of data logging
+    time.sleep(10) #Period of data logging
     i+=1
 
