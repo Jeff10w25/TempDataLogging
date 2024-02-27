@@ -17,12 +17,12 @@ di_dev_1.serial.timeout = 0.05                  #seconds
 di_dev_1.close_port_after_each_call = True
 i=1
 
-def ExcelData(file_path,data,sheet_name):
+def ExcelData(file_path,data,sheet):
     writer = pd.ExcelWriter(file_path, engine='openpyxl')
     writer.book = load_workbook(file_path)
     writer.sheets = dict((ws.title, ws) for ws in writer.book.worksheets)
     reader = pd.read_excel(file_path, index_col=None, na_values=['NA'], usecols="A:C")
-    data.to_excel(writer, index=False ,header=False, startrow=len(reader)+1 ,sheet_name=sheet_name)
+    data.to_excel(writer, index=False ,header=False, startrow=len(reader)+1 ,sheet_name=sheet)
     writer.close()
 
 while (i<100):
