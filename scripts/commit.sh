@@ -1,14 +1,13 @@
 #!/bin/sh
-cd TempDataLogging
-git add excel/
-
-timestamp() {
-  date +"at 10:30 PM"
-}
-
 DELAY=10
+cd TempDataLogging
+sleep $DELAY
+git add excel/
+sleep $DELAY
 
-git commit -am "Regular auto-commit $(timestamp)"
+git commit -m "Regular auto-commit"
+sleep $DELAY
+git pull --autostash
 sleep $DELAY
 git config --global --unset htpps.proxy
 sleep $DELAY
