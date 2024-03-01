@@ -1,5 +1,5 @@
 # Temperature Data Logging
-This repository is part of Kasetsart University's senior project on 'Ground Source Heat Pump (GSHP) and Energy Piles,' which is divided into two parts: temperature data logging and control panel wiring design.
+This repository is part of Kasetsart University's senior project on 'Ground Source Heat Pump (GSHP) and Energy Piles,' which is divided into two parts, temperature data logging and control panel wiring design.
 
 ### Purpose
 -To study the control and automation aspects of the electrical instruments used in GSHP and Energy Piles.
