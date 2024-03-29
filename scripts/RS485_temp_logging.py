@@ -39,7 +39,7 @@ while (i<100):
 
     #Display date and temperature data
     print(str(current_date) + " " + str(current_time) + ", " + "Ch1 of 1st: " + str(data_ch_1_1) + " C")
-    time.sleep(10) #Period of data logging
+    time.sleep(1) #Period of data logging
     i+=1
 
 
