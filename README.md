@@ -9,7 +9,9 @@ This repository is part of Kasetsart University's senior project on 'Ground Sour
 ### Function
 The Python script receives temperature data from digital indicators connected to a PT100 sensor via RS485 communication. Subsequently, this data is stored in an Excel file along with the corresponding time and date. 
 
-The script is executed on a Raspberry Pi, enabling continuous temperature data logging. 
+The script is executed on a Raspberry Pi, enabling continuous temperature data logging.
+
+Once the data is logged, they are automatically push to this repository.
 
 # What are Ground Source Heat Pump (GSHP) and Energy Pile?
 

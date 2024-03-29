@@ -1,5 +1,5 @@
 #!/bin/sh
-DELAY=10
+DELAY=5
 cd TempDataLogging
 sleep $DELAY
 git add excel/
